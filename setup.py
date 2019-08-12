@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="zappa-manage",
-    version="0.0.3",
+    version="0.0.1",
     author="edX-DevOps",
     author_email="devops@edx.org",
     description="Official Manage Package for edX Zappa Bots",
@@ -13,9 +13,6 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/edx/zappa-manage",
     packages=setuptools.find_packages(),
-    dependency_links=[
-        "https://github.com/edx/asym-crypto-yaml"
-    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
