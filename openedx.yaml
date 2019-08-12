@@ -1,0 +1,18 @@
+owner: coryleeio
+
+nick: zappa-manage
+
+supporting_teams:
+    - edx/devops
+
+openedx-release: {ref: release}
+
+oeps:
+    oep-2: true
+    oep-7: true
+    oep-18: true
+
+tags:
+    - backend-service
+    - kms-deployment
+    - zappa-bots
