@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="zappa-manage",
-    version="0.0.1",
+    version="0.0.2",
     author="edX-DevOps",
     author_email="devops@edx.org",
     description="Official Manage Package for edX Zappa Bots",
