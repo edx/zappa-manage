@@ -12,11 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/edx/zappa-manage",
-    packages=[
-        "boto3",
-        "click",
-        "pybase64",
-    ],
+    packages=setuptools.find_packages(),
     dependency_links=[
         "https://github.com/edx/asym-crypto-yaml"
     ],
