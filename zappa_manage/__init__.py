@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import boto
+import boto3
 import click
 from pybase64 import b64encode
 
