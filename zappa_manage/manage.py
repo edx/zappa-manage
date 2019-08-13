@@ -10,17 +10,8 @@ from asym_crypto_yaml import (
     load_private_key_from_string
 )
 
-@click.group()
-def cli():
-    pass
 
-@click.command()
-@click.option('--config_file_path', help='', required=True)
-@click.option('--private_key_content', envvar='PRIVATE_KEY', help='')
-@click.option('--private_key_path', help='')
-@click.option('--kms_key_arn', help='', required=True)
-@click.option('--lambda_name', help='', required=True)
-def deploy_lambda_envs(config_file_path, private_key_content, private_key_path, kms_key_arn, lambda_name):
+def perform_deploy_lambda_envs(config_file_path, private_key_content, private_key_path, kms_key_arn, lambda_name):
     """
     Loads private key to deploy the application's secret values to corresponding lambda
     :config_file_path = path to config file
@@ -46,8 +37,6 @@ def deploy_lambda_envs(config_file_path, private_key_content, private_key_path, 
 
     push_config_and_secrets_to_lambda_env(config_file_path, private_key, kms_key_arn, lambda_name)
 
-
-cli.add_command(deploy_lambda_envs)
 
 def push_config_and_secrets_to_lambda_env(config_file_path, private_key, kms_key_arn, lambda_name):
     """
@@ -90,7 +79,3 @@ def kms_encrypt(kms_key_arn, value):
 
     # returns the encrypted 64 bit string
     return b64encode(response[u'CiphertextBlob']).decode()
-
-if __name__ == '__main__':
-    """Initializes the cli"""
-    cli()
