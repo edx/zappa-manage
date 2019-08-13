@@ -24,4 +24,5 @@ setuptools.setup(
     entry_points='''
         [console_scripts]
         zappa_manage=scripts.zappa_manage:cli
+    ''',
 )
