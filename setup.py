@@ -19,7 +19,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     include_package_data=True,
-    zip_safe=False,
+    zip_safe=True,
     python_requires=">=3.6",
     entry_points='''
         [console_scripts]

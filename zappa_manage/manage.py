@@ -11,7 +11,7 @@ from asym_crypto_yaml import (
 )
 
 
-def deploy_lambda_envs(config_file_path, private_key_content, private_key_path, kms_key_arn, lambda_name):
+def perform_deploy_lambda_envs(config_file_path, private_key_content, private_key_path, kms_key_arn, lambda_name):
     """
     Loads private key to deploy the application's secret values to corresponding lambda
     :config_file_path = path to config file

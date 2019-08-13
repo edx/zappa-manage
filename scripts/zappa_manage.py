@@ -8,7 +8,7 @@ from asym_crypto_yaml import (
     load_private_key_from_string
 )
 
-from zappa_manage import deploy_lambda_envs
+from zappa_manage import perform_deploy_lambda_envs
 
 
 @click.group()
@@ -30,7 +30,7 @@ def deploy_lambda_envs(config_file_path, private_key_content, private_key_path, 
     :kms_key_arn = arn for an aws kms_key
     :lambda_name = name of an aws lambda function
     """
-    deploy_lambda_envs(config_file_path, private_key_content, private_key_path, kms_key_arn, lambda_name)
+    perform_deploy_lambda_envs(config_file_path, private_key_content, private_key_path, kms_key_arn, lambda_name)
 
 
 cli.add_command(deploy_lambda_envs)
