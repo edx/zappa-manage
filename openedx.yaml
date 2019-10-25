@@ -5,8 +5,6 @@ nick: zappa-manage
 supporting_teams:
     - edx/devops
 
-openedx-release: {ref: release}
-
 oeps:
     oep-2: true
     oep-7: true
