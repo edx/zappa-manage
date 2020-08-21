@@ -1,9 +1,4 @@
-owner: coryleeio
-
 nick: zappa-manage
-
-supporting_teams:
-    - edx/devops
 
 oeps:
     oep-2: true
