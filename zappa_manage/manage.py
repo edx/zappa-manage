@@ -28,8 +28,10 @@ def perform_deploy_lambda_envs(config_file_path, private_key_content, private_ke
         # GoCD will mangle the encrypted key when it is passed in this way
         # The following lines unmangle the key.
         private_key_content = private_key_content.replace(' ', '\n')
-        private_key_content = private_key_content.replace('-----BEGIN\nRSA\nPRIVATE\nKEY-----', '-----BEGIN RSA PRIVATE KEY-----')
-        private_key_content = private_key_content.replace('-----END\nRSA\nPRIVATE\nKEY-----', '-----END RSA PRIVATE KEY-----')
+        private_key_content = private_key_content.replace('-----BEGIN\nRSA\nPRIVATE\nKEY-----',
+                                                          '-----BEGIN RSA PRIVATE KEY-----')
+        private_key_content = private_key_content.replace('-----END\nRSA\nPRIVATE\nKEY-----',
+                                                          '-----END RSA PRIVATE KEY-----')
         private_key = load_private_key_from_string(private_key_content.encode('utf-8'))
 
     if private_key is None:
@@ -47,13 +49,13 @@ def push_config_and_secrets_to_lambda_env(config_file_path, private_key, kms_key
     :kms_key_arn = arn for an aws kms_key
     :lambda_name = name of an aws lambda function
     """
-    with open(config_file_path, "r") as f:
+    with open(config_file_path) as f:
         config = load(f)
-    if (config is None):
+    if config is None:
         config = {}
 
-    for key,value in config.items():
-        if (type(value) == Encrypted):
+    for key, value in config.items():
+        if type(value) == Encrypted:
             config[key] = kms_encrypt(kms_key_arn, decrypt_value(value, private_key))
 
     client = boto3.client('lambda')
@@ -64,6 +66,7 @@ def push_config_and_secrets_to_lambda_env(config_file_path, private_key, kms_key
         }
     )
 
+
 def kms_encrypt(kms_key_arn, value):
     """
     Uses AWS KMS to encrypt the value of an environment variable
@@ -73,9 +76,9 @@ def kms_encrypt(kms_key_arn, value):
     client = boto3.client('kms')
 
     response = client.encrypt(
-       KeyId=kms_key_arn,
-       Plaintext=value,
+        KeyId=kms_key_arn,
+        Plaintext=value,
     )
 
     # returns the encrypted 64 bit string
-    return b64encode(response[u'CiphertextBlob']).decode()
+    return b64encode(response['CiphertextBlob']).decode()
