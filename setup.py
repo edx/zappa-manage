@@ -1,11 +1,11 @@
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="zappa-manage",
-    version="0.0.3",
+    version="1.0.0",
     author="edX-DevOps",
     author_email="devops@edx.org",
     description="Official Manage Package for edX Zappa Bots",
@@ -20,7 +20,7 @@ setuptools.setup(
     ],
     include_package_data=True,
     zip_safe=True,
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     entry_points='''
         [console_scripts]
         zappa_manage=scripts.zappa_manage:cli
