@@ -1,11 +1,29 @@
+import os
+import re
+
 import setuptools
 
 with open("README.md") as fh:
     long_description = fh.read()
 
+def get_version(*file_paths):
+    """
+    Extract the version string from the file at the given relative path fragments.
+    """
+    filename = os.path.join(os.path.dirname(__file__), *file_paths)
+    version_file = open(filename).read()
+    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                            version_file, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError('Unable to find version string.')
+
+VERSION = get_version('zappa_manage', '__init__.py')
+
+
 setuptools.setup(
     name="zappa-manage",
-    version="1.0.0",
+    version=VERSION,
     author="edX-DevOps",
     author_email="devops@edx.org",
     description="Official Manage Package for edX Zappa Bots",
