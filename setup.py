@@ -1,3 +1,6 @@
+import os
+import re
+
 import setuptools
 
 with open("README.md") as fh:
